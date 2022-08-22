@@ -13,12 +13,3 @@ GRN1
 class(GRNs[1, ])
 class(GRN1)
 dim(GRN1)
-
-
-abs(sign(GRN1[1, ]))
-
-sapply(rawdata[1,1:3])
-
-
-g <- graph.adjacency(abs(sign(GRN1)), mode = "directed", weighted = NULL)
-plot(g)

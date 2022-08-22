@@ -26,4 +26,5 @@ class(complexitylist)
 png(file = "figs/complexityhistogram.png")
 # Create the histogram.
 hist(complexitylist, xlab = "Weight",col = "darkcyan")
+
 dev.off()

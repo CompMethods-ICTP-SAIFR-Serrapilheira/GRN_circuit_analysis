@@ -1,5 +1,4 @@
 library(plyr)
-
 #Topological considerations
 data <- read.csv("data/raw/raw_grns.csv")
 

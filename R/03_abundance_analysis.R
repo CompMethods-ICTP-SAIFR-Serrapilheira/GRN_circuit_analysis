@@ -6,6 +6,7 @@ singletopologies <- read.csv("output/singletopologies.csv")
 
 singletopologies$V1
 
+
 png(file = "figs/abundancehistogram.png")
 
 hist(singletopologies$V1, breaks = 30, xlab = "Number of GRN ocurrances",
