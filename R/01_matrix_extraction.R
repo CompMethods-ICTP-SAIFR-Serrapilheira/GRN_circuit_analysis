@@ -1,4 +1,3 @@
-library(igraph)
 
 #Whole GRN information extraction
 rawdata <- read.csv("data/raw/raw_grns.csv")

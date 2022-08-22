@@ -1,11 +1,15 @@
+library(plyr)
+
 #Topological considerations
-data <- read.csv("./raw_grns.csv")
+data <- read.csv("data/raw/raw_grns.csv")
 
 data <- data[,5:16]
 
-GRN <- sign(data)
+GRNs <- sign(data)
 
-net <- unique(GRN) #topologies without repetition
+singleGRNS <- ddply(GRNs, .(MA,AA,BA,CA,MB,AB,BB,CB,MC,AC,BC,CC), nrow)
+
+net <- singleGRNS[,-13]
 
 net1 <- data.matrix(net)
 net2 <- data.matrix(net)
@@ -64,3 +68,13 @@ for(i in seq(1, length(net[,1]))){
   }
   print(i)
 }
+
+for(i in seq(1, length(redundant_source))){
+  singleGRNS$V1[redundant_source[i]] <- singleGRNS$V1[redundant_source[i]] +
+    singleGRNS$V1[redundant_target[i]]
+}
+
+singleGRNS <- singleGRNS[c(-redundant_target), ]
+write.csv(singleGRNS, "output/singletopologies.csv")
+
+
