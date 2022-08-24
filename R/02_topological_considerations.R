@@ -52,7 +52,7 @@ for(i in seq(1, length(net[,1]))){
     next
   }
   for(j in seq(1, length(net[,1]))){
-    for(k in seq(2,5)){
+    for(k in seq(2,6)){
       if(j!=i){
         j_net <- net[j,(1+(k-1)*12):(k*12)]
         if(sum(i_net==j_net)==12){

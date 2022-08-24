@@ -1,22 +1,11 @@
 #GRN diversity analysis
 library(plyr)
 
-GRNs <- read.csv("data/processed/GRNs.csv")
-
-#GRN extraction
-signGRN <- sign(GRNs)
-signGRN[1, ]#First GRN
-
-#Unique circuits with duplications
-duplicatedcircuits <- unique(signGRN)
-abs(duplicatedcircuits)
-
-#Number of times each circuit appers
-singleGRNS <- ddply(signGRN, .(MA,AA,BA,CA,MB,AB,BB,CB,MC,AC,BC,CC), nrow)
-
+singletopologies <- read.csv("output/singletopologies.csv")
 
 numbinteracGRN <- ddply(abs(duplicatedcircuits), .(MA,AA,BA,CA,MB,AB,BB,CB,MC,AC,BC,CC), sum)
 
+singletopologies[ , -1]
 
 GRNScomplexity <- transform(abs(duplicatedcircuits), sum = rowSums(abs(duplicatedcircuits)))
 complexitylist <- GRNScomplexity[ , length(GRNScomplexity)] #List of complexity value per type of circuit
